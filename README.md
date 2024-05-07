@@ -29,4 +29,4 @@ Existe também a classe `Disciplina` que modela as informações de uma discipli
 
 ## Como Executar
 
-Para executar o sistema, basta compilar os arquivos Java e iniciar a classe `TelaLogin`. Uma vez em execução, você poderá utilizar as funcionalidades de login e cadastro de disciplinas.
+Para executar o sistema, basta compilar os arquivos Java e iniciar a classe `Main` em VIEW. Uma vez em execução, você poderá utilizar as funcionalidades de login e cadastro de disciplinas.
