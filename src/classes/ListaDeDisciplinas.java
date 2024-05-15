@@ -23,8 +23,12 @@ public class ListaDeDisciplinas {
         list.add(d);
     }
 
-    public Disciplina getList(int i) {
+    public Disciplina get(int i) {
         return list.get(i);
+    }
+
+    public List<Disciplina> getList() {
+        return list;
     }
 
     public void remove(int i){

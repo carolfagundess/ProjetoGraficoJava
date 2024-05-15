@@ -4,8 +4,6 @@
  */
 package view;
 
-import javax.swing.JLabel;
-
 /**
  *
  * @author carol
@@ -39,7 +37,8 @@ public class TelaIncial extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnCadastro = new javax.swing.JButton();
         btnRelatorio = new javax.swing.JButton();
-        btnConsulta1 = new javax.swing.JButton();
+        btnConsultaJTable = new javax.swing.JButton();
+        btnConsultaLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Incial");
@@ -67,10 +66,17 @@ public class TelaIncial extends javax.swing.JFrame {
             }
         });
 
-        btnConsulta1.setText("Consulta de Disciplinas");
-        btnConsulta1.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultaJTable.setText("Consulta de Disciplinas em Tabela");
+        btnConsultaJTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsulta1ActionPerformed(evt);
+                btnConsultaJTableActionPerformed(evt);
+            }
+        });
+
+        btnConsultaLista.setText("Consulta de Disciplinas");
+        btnConsultaLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaListaActionPerformed(evt);
             }
         });
 
@@ -78,15 +84,16 @@ public class TelaIncial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnConsulta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRelatorio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConsultaJTable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(labelUsuario)
                         .addGap(0, 301, Short.MAX_VALUE))
-                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultaLista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -102,10 +109,12 @@ public class TelaIncial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btnConsultaLista, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnConsultaJTable, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
+                .addGap(48, 48, 48))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(69, 69, 69)
@@ -129,17 +138,25 @@ public class TelaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        // TODO add your handling code here:
+        TelaRelatorio telaRelatorio = new TelaRelatorio();
+        telaRelatorio.setVisible(true);
     }//GEN-LAST:event_btnRelatorioActionPerformed
 
-    private void btnConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulta1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsulta1ActionPerformed
+    private void btnConsultaJTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaJTableActionPerformed
+        TelaConsultaJTable telaConsultaTable = new TelaConsultaJTable();
+        telaConsultaTable.setVisible(true);
+    }//GEN-LAST:event_btnConsultaJTableActionPerformed
+
+    private void btnConsultaListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaListaActionPerformed
+        TelaConsultaLista telaConsulta = new TelaConsultaLista();
+        telaConsulta.setVisible(true);
+    }//GEN-LAST:event_btnConsultaListaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
-    private javax.swing.JButton btnConsulta1;
+    private javax.swing.JButton btnConsultaJTable;
+    private javax.swing.JButton btnConsultaLista;
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnSair;
     private javax.swing.JFileChooser jFileChooser1;

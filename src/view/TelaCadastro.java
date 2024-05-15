@@ -5,7 +5,6 @@
 package view;
 
 import classes.Disciplina;
-import java.security.Principal;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,14 +13,33 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastro extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TelaCadastro
-     */
+    private int index = -1;
+
+    //se for -1 é uma inclusao e se for diferente é uma alteração!!
+    public void setIndex(int index) {
+        this.index = index;
+        if (index >= 0) {
+            Disciplina d = Main.listaD.get(index);
+            txtNome.setText(d.getNome());
+            txtProfessor.setText(d.getProfessor());
+            txtHoras.setText(Integer.toString(d.getHoras()));
+            switch (d.getSemestre()) {
+                case 1 -> rbPrimeiro.setSelected(true);
+                case 2 -> rbSegundo.setSelected(true);
+                case 3 -> rbTerceiro.setSelected(true);
+                case 4 -> rbQuarto.setSelected(true);
+                case 5 -> rbQuinto.setSelected(true);
+                case 6 -> rbSexto.setSelected(true);
+                default -> rbPrimeiro.setSelected(true);
+            }
+        }
+    }
+
     public TelaCadastro() {
         initComponents();
     }
-    
-    private void LimparCampos(){
+
+    private void limparCampos() {
         //limpa todos os campos da tela
         txtNome.setText("");
         txtProfessor.setText("");
@@ -191,7 +209,7 @@ public class TelaCadastro extends javax.swing.JDialog {
         try {
             horas = Integer.valueOf(txtHoras.getText());
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
         //convertendo em semestres
@@ -216,22 +234,29 @@ public class TelaCadastro extends javax.swing.JDialog {
         } else if (txtProfessor.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo professor!");
             txtProfessor.requestFocus();
-        }else if (horas <= 0) {
-            JOptionPane.showMessageDialog(rootPane, "Horas precisa ser maior que zero!");
+        } else if (horas <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "Horas precisa ser maior que zero(0)!");
             txtHoras.requestFocus();
-        }else if(semestre == 0){
+        } else if (semestre == 0) {
             JOptionPane.showMessageDialog(rootPane, "Selecione um semestre nas opções!");
             rbPrimeiro.requestFocus();
-        }else{
+        } else {
             //não preciso mais testar, todos os campos foram validados
             //criar a disciplina e adicionar na lista
             Disciplina d = new Disciplina(txtNome.getText(), txtProfessor.getText(), horas, semestre);
             //disciplina criado
             System.out.println("Disciplina criada" + d);
             //adicionando na lista
-            Main.listaD.add(d);
-            JOptionPane.showMessageDialog(rootPane, "Disciplina adicionada!");
-            LimparCampos();
+            JOptionPane.showMessageDialog(this, "Disciplina Criada");
+            //adicionar ou editar verificação
+            if (index == -1) {
+                Main.listaD.add(d);
+                rbPrimeiro.setSelected(true);
+                limparCampos();
+            }else{
+                Main.listaD.alterar(d, index);
+                dispose();
+            }
             
             System.out.println("-------------------------------");
             System.out.println(Main.listaD);
