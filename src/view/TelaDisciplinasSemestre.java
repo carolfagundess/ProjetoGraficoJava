@@ -34,7 +34,7 @@ public class TelaDisciplinasSemestre extends javax.swing.JDialog {
         this.indice = indice;
         SemestreLetivo s = Main.listaS.get(indice);
 
-        jLabelSemestre.setText("<html> Semestre Letivo  " + s.getAno() + " - " + s.getSemestre() + "<br>"
+        jLabelSemestre.setText("<html> Semestre Letivo  " + s.getSemestre() + " - " + s.getAno() + "<br>"
                 + s.getDataInicio().format(formatter) + " até "
                 + s.getDataFim().format(formatter) + "</html>");
         jComboBox1.removeAllItems();
@@ -43,14 +43,14 @@ public class TelaDisciplinasSemestre extends javax.swing.JDialog {
         }
         atualizaLista();
     }
-    
-    private void atualizaLista(){
+
+    private void atualizaLista() {
         DefaultListModel model = new DefaultListModel();
         SemestreLetivo s = Main.listaS.get(indice);
         for (Disciplina disciplina : s.getListaDisciplina()) {
             model.addElement(disciplina.getSemestre() + "º Sem.: " + disciplina.getNome());
         }
-        jList1.setModel(model);
+        jListDxS.setModel(model);
     }
 
     /**
@@ -71,7 +71,7 @@ public class TelaDisciplinasSemestre extends javax.swing.JDialog {
         btnRemover = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jListDxS = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Disciplinas do Semestre");
@@ -138,12 +138,12 @@ public class TelaDisciplinasSemestre extends javax.swing.JDialog {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListDxS.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jListDxS);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,11 +178,16 @@ public class TelaDisciplinasSemestre extends javax.swing.JDialog {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         //BOTAO DE ADD DISCIPLINAS DA LISTA DE DISCIPLINAS DO SEMESTRE
-        
+        Main.listaS.addDisciplina(Main.listaD.get(jComboBox1.getSelectedIndex()), indice);
+        atualizaLista();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        //BOTAO DE REMOVER DISCIPLINAS DA LISTA DE DISCIPLINAS DO SEMESTRE
+        //indice = indice do semestre
+        //jList = indice da disciplina
+        //INDICE DO SEMSTRE E INDICE DA DISCIPLINA NA LISTADISCIPLINAS
+        Main.listaS.removeDisciplina(indice, jListDxS.getSelectedIndex());
+        atualizaLista();
     }//GEN-LAST:event_btnRemoverActionPerformed
 
 
@@ -193,7 +198,7 @@ public class TelaDisciplinasSemestre extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelSemestre;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jListDxS;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;

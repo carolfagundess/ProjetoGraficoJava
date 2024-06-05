@@ -179,7 +179,14 @@ public class TelaConsultaSemestre extends javax.swing.JFrame implements KeyListe
             TelaDisciplinasSemestre telaDisciplinas = new TelaDisciplinasSemestre();
             telaDisciplinas.setIndice(jTableSemestres.getSelectedRow());
             telaDisciplinas.setVisible(true);
-            atualizaTabela();
+
+            telaDisciplinas.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    atualizaTabela();
+                }
+            });
+
         } else {
             JOptionPane.showMessageDialog(rootPane, "<html>Selecione um semestre e <br>Pressione o botão F7 para abrir as disciplinas!</html>");
         }

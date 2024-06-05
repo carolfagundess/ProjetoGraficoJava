@@ -48,8 +48,8 @@ public class Main {
         listaS.addDisciplina(d, 0);
         listaS.addDisciplina(d2, 1);
         listaS.addDisciplina(d3, 2);
- 
-
+        listaS.addDisciplina(d4, 1);
+        
         TelaLogin telaLogin = new TelaLogin();
         telaLogin.setVisible(true);
 

@@ -216,12 +216,15 @@ public class TelaCadastroSemestre extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo Data Final!");
             txtDataFim.requestFocus();
         } else {
-            if (ano >= 2050 && ano <= 0) {
-                JOptionPane.showConfirmDialog(rootPane, "Digite uma data válida");
+            if (ano <= 0 || ano >= 2055) {
+                JOptionPane.showMessageDialog(rootPane, "Digite uma data válida");
+                txtAno.requestFocus();
             } else if (!validaData(txtDataIni.getText())) {
                 JOptionPane.showMessageDialog(rootPane, "Preencha uma data inicial Válida");
+                txtDataFim.requestFocus();
             } else if (!validaData(txtDataFim.getText())) {
                 JOptionPane.showMessageDialog(rootPane, "Digite uma data final válida!");
+                txtDataFim.requestFocus();
             } else {
                 SemestreLetivo s;
                 s = new SemestreLetivo(ano, jComboBox1.getSelectedIndex(), YearMonth.parse(txtDataIni.getText(), formatter), YearMonth.parse(txtDataFim.getText(), formatter));
@@ -237,6 +240,7 @@ public class TelaCadastroSemestre extends javax.swing.JDialog {
                     }
                     Main.listaS.addSemestreLista(s);
                     limparCampos();
+                    dispose();
                 } else {
                     int teste = JOptionPane.showConfirmDialog(rootPane, "<html>Você quer alterar este período para?<br><br>Ano:  " + s.getAno()
                             + "<br><br>Semestre:  " + s.getSemestre()
@@ -249,7 +253,6 @@ public class TelaCadastroSemestre extends javax.swing.JDialog {
                     Main.listaS.alterarLista(s, index);
                 }
                 System.out.println(Main.listaS.toString());
-                dispose();
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed

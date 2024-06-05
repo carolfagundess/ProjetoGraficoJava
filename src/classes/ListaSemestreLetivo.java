@@ -51,7 +51,14 @@ public class ListaSemestreLetivo {
     }
 
     public void removeDisciplina(int semestre, int idD) {
-        //nao entendi//verificar
+        //remover uma disciplina de um semestre especifico sabendo o id da disciplina na listaDisciplinas
+        List<Disciplina> disciplinas = lista.get(semestre).getListaDisciplina();
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina == disciplinas.get(idD)) {
+                lista.get(semestre).getListaDisciplina().remove(disciplina);
+            }
+        }
+        
     }
 
     public int getQtdDisciplinas(int i) {

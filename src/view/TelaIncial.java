@@ -85,7 +85,7 @@ public class TelaIncial extends javax.swing.JFrame {
         });
 
         btnConsultaLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/lista.png"))); // NOI18N
-        btnConsultaLista.setText("Cadastrar Semestre");
+        btnConsultaLista.setText("Consultar Lista");
         btnConsultaLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultaListaActionPerformed(evt);
