@@ -52,7 +52,8 @@ public class Disciplina {
 
     @Override
     public String toString() {
-        return "Disciplina{" + "nome=" + nome + ", professor=" + professor + ", horas=" + horas + ", semestre=" + semestre + "}\n";
+        return "Disciplina{" + "nome=" + nome + ", professor=" + professor + ", horas=" + horas + ", semestre=" + semestre + '}';
     }
+
     
 }

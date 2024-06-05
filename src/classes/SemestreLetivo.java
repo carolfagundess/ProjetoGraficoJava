@@ -1,23 +1,29 @@
 package classes;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.Month;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class SemestreLetivo {
+    
 
     private int ano;
     private int semestre;
-    private Date dataFim;
-    private List<Disciplina> lista;
+    private YearMonth  dataInicio;
+    private YearMonth  dataFim;
+    private List<Disciplina> listaDisciplina;
 
-    public SemestreLetivo(int ano, int semestre, Date dataFim, List<Disciplina> lista) {
+    //construtor iniciando um semestre, sem a lista das disciplinas
+    public SemestreLetivo(int ano, int semestre, YearMonth dataIncio, YearMonth dataFim) {
         this.ano = ano;
         this.semestre = semestre;
+        this.dataInicio = dataIncio;
         this.dataFim = dataFim;
         //cria lista de disciplinas deste semestre
-        this.lista = new LinkedList<>();
+        listaDisciplina = new LinkedList<>();
     }
 
     public int getAno() {
@@ -36,26 +42,74 @@ public class SemestreLetivo {
         this.semestre = semestre;
     }
 
-    public Date getDataFim() {
+    public YearMonth getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(YearMonth dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public YearMonth getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(YearMonth dataFim) {
         this.dataFim = dataFim;
     }
 
-    //operações com a lista disciplinas do semestre
-    public List<Disciplina> getLista() {
-        //retorna a lista
-        return lista;
+    public List<Disciplina> getListaDisciplina() {
+        return listaDisciplina;
     }
 
-    public Disciplina getDisciplinaSemestre(int i){
-        //retorna a disciplina do indice i da lista de disciplinas do semestre
-        return lista.get(i);
+    public void setListaDisciplina(List<Disciplina> listaDisciplina) {
+        this.listaDisciplina = listaDisciplina;
+    }
+    
+    public LinkedList getNomeDisciplina(){
+        LinkedList nomes = new LinkedList();
+        for (Disciplina disciplina : listaDisciplina) {
+             nomes.add(disciplina.getNome());
+        }
+        return nomes;
     }
 
-    public void addLista(Disciplina disciplina) {
-        this.lista.add(disciplina);
+    @Override
+    public String toString() {
+        return "SemestreLetivo{" + "ano=" + ano + ", semestre=" + semestre + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", listaDisciplina=" + listaDisciplina + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SemestreLetivo other = (SemestreLetivo) obj;
+        if (this.ano != other.ano) {
+            return false;
+        }
+        if (this.semestre != other.semestre) {
+            return false;
+        }
+        if (!Objects.equals(this.dataInicio, other.dataInicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataFim, other.dataFim)) {
+            return false;
+        }
+        return Objects.equals(this.listaDisciplina, other.listaDisciplina);
+    }
+    
 }

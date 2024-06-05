@@ -107,6 +107,7 @@ public class TelaCadastro extends javax.swing.JDialog {
         buttonGroup1.add(rbSexto);
         rbSexto.setText(" 6º Semestre");
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/disquete.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,11 +115,18 @@ public class TelaCadastro extends javax.swing.JDialog {
             }
         });
 
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/fechar (2).png"))); // NOI18N
         btnSair.setText("Sair");
         btnSair.setPreferredSize(new java.awt.Dimension(70, 20));
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
+            }
+        });
+
+        txtHoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHorasActionPerformed(evt);
             }
         });
 
@@ -262,6 +270,10 @@ public class TelaCadastro extends javax.swing.JDialog {
             System.out.println(Main.listaD);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHorasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHorasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,12 +11,12 @@ import view.util.DisciplinaTableModel;
  *
  * @author carol
  */
-public class TelaConsultaJTable extends javax.swing.JFrame {
+public class TelaConsultaDisciplina extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaConsultaJTable
      */
-    public TelaConsultaJTable() {
+    public TelaConsultaDisciplina() {
         initComponents();
         atualizaTabela();
     }
@@ -69,13 +69,10 @@ public class TelaConsultaJTable extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {

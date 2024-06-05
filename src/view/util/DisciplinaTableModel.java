@@ -5,7 +5,6 @@
 package view.util;
 
 import classes.Disciplina;
-import java.security.Principal;
 import javax.swing.table.AbstractTableModel;
 import view.Main;
 
