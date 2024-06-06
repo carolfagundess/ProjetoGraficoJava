@@ -5,7 +5,6 @@
 package view;
 
 import classes.Disciplina;
-import java.security.Principal;
 import javax.swing.JOptionPane;
 
 /**
